@@ -51,6 +51,10 @@
     <bean id="mySqlInjector" class="org.example.injector.MySqlInjector"></bean>
     <bean id="logicSqlInjector" class="com.baomidou.mybatisplus.mapper.LogicSqlInjector"></bean>
 
+    <bean id="myMetaObjectHandler" class="org.example.metahandler.MyMetaObjectHandler">
+
+    </bean>
+
     <bean id="globalConfiguration" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
         <!--2.3版本之后MybatisPlus默认是true，无需显式配置-->
         <!--会自动将实体类中驼峰的属性名映射为表的下划线-->
@@ -65,6 +69,9 @@
         <!--指定逻辑删除的逻辑值-->
         <property name="logicDeleteValue" value="-1"></property>
         <property name="logicNotDeleteValue" value="1"></property>
+
+        <!--设置公共字段填充 处理器-->
+        <property name="metaObjectHandler" ref="myMetaObjectHandler"></property>
     </bean>
     <!--配置mapper接口的扫描-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

@@ -20,12 +20,30 @@ public class TestMp {
         System.out.println("操作："+i);
     }
 
-    @Test
+
     public void testLogicDelete(){
 //        Integer integer = userMapper.deleteById(3);
 //        System.out.println("操作："+integer);
 
         User user = userMapper.selectById(3);
         System.out.println(user);
+    }
+
+    @Test
+    public void testCommonFieldSet(){
+        User user=new User();
+        user.setLogicFlag(1);
+        userMapper.insert(user);
+
+        User user2=new User();
+        user2.setName("www");
+        user2.setLogicFlag(1);
+        userMapper.insert(user2);
+
+        User user3=new User();
+        user3.setLogicFlag(1);
+        user3.setId(5);
+        userMapper.updateById(user3);
+
     }
 }
